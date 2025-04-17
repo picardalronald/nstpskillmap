@@ -1,42 +1,42 @@
-// Function to show the clicked section and hide others
-function showSection(sectionId) {
-    // Hide all sections
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => section.style.display = 'none');
-  
-    // Show the clicked section
-    const sectionToShow = document.getElementById(sectionId);
-    if (sectionToShow) {
-      sectionToShow.style.display = 'block';
-    }
-  }
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(section => {
+    section.style.display = 'none';
+  });
+  document.getElementById(id).style.display = 'block';
+}
 
-  //  Function to populate Farm Profile details
-   function showFarmProfile(name, size, age, type, address, description, directoryName, position, contact, imgSrc) {
-    document.getElementById('farmName').innerText = `Name: ${name}`;
-    document.getElementById('farmSize').innerText = `Size: ${size}`;
-    document.getElementById('farmAge').innerText = `Age: ${age}`;
-    document.getElementById('farmType').innerText = `Type: ${type}`;
-    document.getElementById('farmAddress').innerText = `Address: ${address}`;
-    document.getElementById('farmDescription').innerText = `Description: ${description}`;
-    document.getElementById('directoryName').innerText = `Name: ${directoryName}`;
-    document.getElementById('directoryPosition').innerText = `Position: ${position}`;
-    document.getElementById('directoryContact').innerText = `Contact No: ${contact}`;
-    
-    // Update the farm image dynamically
-     document.getElementById('farmImage').src = imgSrc;
+function showFarmProfileFromCurrent() {
+  if (!currentFarm) return;
 
-  }
+  document.getElementById('farmImage').src = currentFarm.image;
+  document.getElementById('farmName').textContent = "Name: " + currentFarm.name;
+  document.getElementById('farmSize').textContent = "Size: " + currentFarm.size;
+  document.getElementById('farmAge').textContent = "Age: " + currentFarm.age;
+  document.getElementById('farmType').textContent = "Type: " + currentFarm.type;
+  document.getElementById('farmAddress').textContent = "Address: " + currentFarm.address;
+  document.getElementById('farmDescription').textContent = "Description: " + currentFarm.description;
 
-  // Function to populate Skill Map details
-  function showSkillMap(name, skill, farm, contact) {
-    document.getElementById('skillName').innerText = `Name: ${name}`;
-    document.getElementById('skill').innerText = `Skill: ${skill}`;
-    document.getElementById('farmSkill').innerText = `Farm: ${farm}`;
-    document.getElementById('contactSkill').innerText = `Contact No: ${contact}`;
-  }
+  document.getElementById('directoryName').textContent = "Name: " + currentFarm.directory.name;
+  document.getElementById('directoryPosition').textContent = "Position: " + currentFarm.directory.position;
+  document.getElementById('directoryContact').textContent = "Contact No: " + currentFarm.directory.contact;
 
-  // Function to show Analysis details
-  function showAnalysis(analysis) {
-    document.getElementById('analysisText').innerText = analysis;
-  }
+  showSection('farmProfile');
+}
+
+function showSkillMapFromCurrent() {
+  if (!currentFarm || !currentFarm.skill) return;
+
+  document.getElementById('skillName').textContent = "Name: " + currentFarm.skill.name;
+  document.getElementById('skill').textContent = "Skill: " + currentFarm.skill.skill;
+  document.getElementById('farmSkill').textContent = "Farm: " + currentFarm.name;
+  document.getElementById('contactSkill').textContent = "Contact No: " + currentFarm.skill.contact;
+
+  showSection('skillMap');
+}
+
+function showStatisticsFromCurrent() {
+  if (!currentFarm || !currentFarm.analysis) return;
+
+  document.getElementById('statisticsContent').textContent = currentFarm.analysis;
+  showSection('statistics');
+}
