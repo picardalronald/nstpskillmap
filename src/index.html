@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <style>
+    .section {
+      display: none;
+    }
+  </style>
+  <title>Skills Map</title>
+</head>
+
+
+<body class="bg-gray-100 p-2">
+
+  <main class="flex flex-col mt-5 sm:flex-row bg-green-600  rounded-xl p-7 gap-10">
+    <!-- Map -->
+    <div class="w-full md:w-[600px] h-[300px] md:h-[580px] bg-white rounded-2xl" id="map"></div>
+
+    <!-- Right side: Buttons and dynamic sections -->
+    <div class="flex flex-col w-full sm:w-auto space-y-3">
+      <div class="flex flex-wrap gap-4 xs:flex-col sm:flex-row">
+        <button class="font-serif text-xl font-bold xs:text-red-600 cursor-pointer hover:text-green-800 transition"
+          onclick="showSection('farmProfile')"> 
+          Farm Profile
+        </button>
+    
+        <button class="font-serif text-xl font-bold cursor-pointer hover:text-green-800 transition"
+          onclick="showSection('skillMap')">
+          Skill Map
+        </button>
+
+        <button class="font-serif  text-xl font-bold cursor-pointer hover:text-green-800 transition"
+          onclick="showSection('analysis')">
+          Analysis
+        </button>
+      </div>
+
+    
+        <!-- Farm Profile -->
+        <div id="farmProfile" class="section text-2 font-bold bg-white p-4 rounded-xl w-full max-w-md">
+          <h2 class="text-xl font-bold mb-2  text-green-800">Farm Profile</h2>
+          <img id="farmImage" src="" alt="Farm Image" class="w-[300px] rounded-lg mb-3">
+          <p id="farmName">Name: </p>
+          <p id="farmSize">Size: </p>
+          <p id="farmAge">Age: </p>
+          <p id="farmType">Type:</p>
+          <p id="farmAddress">Address: </p>
+          <p id="farmDescription">Description:</p>
+             <!-- Directory -->
+          <h2 class="text-xl font-bold mt-5  text-green-800">Directory</h2>
+              <p id="directoryName">Name:</p>
+              <p id="directoryPosition">Position: </p>
+              <p id="directoryContact">Contact No:</p>
+
+        </div>
+
+        <!-- Skill Map -->
+        <div id="skillMap" class="section bg-white  p-4 rounded-xl w-full max-w-md">
+          <h2 class="text-xl font-bold mb-2 text-green-800">Skill Map</h2>
+          <div class="space-y-2 text-2 font-bold">
+              <p id="skillName">Name:</p>
+              <p id="skill">Skill:</p>
+              <p id="farmSkill">Farm:</p>
+              <p id="contactSkill">Contact No:</p>
+            </div>
+        </div>
+
+        <!-- Analysis -->
+        <div id="analysis" class="section text-2 font-bold bg-white  p-4 rounded-xl w-full max-w-md">
+          <h2 class="text-xl font-bold mb-2  text-green-800">Analysis</h2>
+          <p id="analysisText">This section will contain future analytics and graphs.</p>
+        </div>
+  </main>
+
+  <script src="./map.js"></script>
+  <script src="./showdetails.js"></script>
+
+
+  
+
+</body>
+</html>
